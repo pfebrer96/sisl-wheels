@@ -123,7 +123,6 @@ deploy:
   provider: GitHub
   auth_token:
     secure: 0QIgDvK+vuiC36uPQ1NLiOMujWRuOLPe5x2tJ4doi7fSR7W9OUsfqlHWTAuK6XOz
-  artifact: dist/*.whl
   draft: false
   prerelease: false
   force_update: true
