@@ -14,59 +14,44 @@ environment:
       BUILD_COMMIT: v0.10.0
 
     matrix:
-    # - PYTHON: C:\Python39
-    #   PYTHON_VERSION: 3.9
-    #   PYTHON_ARCH: 32
-    #   NUMPY_BUILD_DEP: numpy==1.19.3
-    #   NUMPY_TEST_DEP: numpy==1.19.3
-    #   CYTHON_BUILD_DEP: Cython
+    - PYTHON: C:\Python39
+      PYTHON_VERSION: 3.9
+      MINGW_DIR: C:\MinGW\bin
+      PYTHON_ARCH: 32
 
-    # - PYTHON: C:\Python39-x64
-    #   PYTHON_VERSION: 3.9
-    #   PYTHON_ARCH: 64
-    #   NUMPY_BUILD_DEP: numpy==1.19.3
-    #   NUMPY_TEST_DEP: numpy==1.19.3
-    #   CYTHON_BUILD_DEP: Cython
+    - PYTHON: C:\Python39-x64
+      PYTHON_VERSION: 3.9
+      MINGW_DIR: C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
+      PYTHON_ARCH: 64
 
-    # - PYTHON: C:\Python38
-    #   PYTHON_VERSION: 3.8
-    #   PYTHON_ARCH: 32
-    #   NUMPY_BUILD_DEP: numpy==1.17.3
-    #   NUMPY_TEST_DEP: numpy==1.17.3
-    #   CYTHON_BUILD_DEP: Cython
+    - PYTHON: C:\Python38
+      PYTHON_VERSION: 3.8
+      MINGW_DIR: C:\MinGW\bin
+      PYTHON_ARCH: 32
 
-    # - PYTHON: C:\Python38-x64
-    #   PYTHON_VERSION: 3.8
-    #   PYTHON_ARCH: 64
-    #   NUMPY_BUILD_DEP: numpy==1.17.3
-    #   NUMPY_TEST_DEP: numpy==1.17.3
-    #   CYTHON_BUILD_DEP: Cython
+    - PYTHON: C:\Python38-x64
+      PYTHON_VERSION: 3.8
+      MINGW_DIR: C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
+      PYTHON_ARCH: 64
 
-    # - PYTHON: C:\Python37
-    #   PYTHON_VERSION: 3.7
-    #   PYTHON_ARCH: 32
-    #   NUMPY_BUILD_DEP: numpy==1.14.5
-    #   NUMPY_TEST_DEP: numpy==1.14.5
-    #   CYTHON_BUILD_DEP: Cython
+    - PYTHON: C:\Python37
+      PYTHON_VERSION: 3.7
+      MINGW_DIR: C:\MinGW\bin
+      PYTHON_ARCH: 32
 
-    # - PYTHON: C:\Python37-x64
-    #   PYTHON_VERSION: 3.7
-    #   PYTHON_ARCH: 64
-    #   NUMPY_BUILD_DEP: numpy==1.14.5
-    #   NUMPY_TEST_DEP: numpy==1.14.5
-    #   CYTHON_BUILD_DEP: Cython
+    - PYTHON: C:\Python37-x64
+      PYTHON_VERSION: 3.7
+      MINGW_DIR: C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
+      PYTHON_ARCH: 64
 
-    # - PYTHON: C:\Python36
-    #   PYTHON_VERSION: 3.6
-    #   PYTHON_ARCH: 32
-    #   NUMPY_BUILD_DEP: numpy==1.14.5
+    - PYTHON: C:\Python36
+      PYTHON_VERSION: 3.6
+      MINGW_DIR: C:\MinGW\bin
+      PYTHON_ARCH: 32
 
     - PYTHON: C:\Python36-x64
       MINGW_DIR: C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
-      PYTHON_VERSION: 3.6
       PYTHON_ARCH: 64
-      NUMPY_BUILD_DEP: numpy==1.14.5
-
 install:
   - cmd: echo "Using cmd"
 
@@ -119,7 +104,7 @@ after_test:
 
 deploy:
   release: $(BUILD_COMMIT)
-  description: 'Cython $(BUILD_COMMIT)'
+  description: 'Wheels for sisl-$(BUILD_COMMIT)'
   provider: GitHub
   auth_token:
     secure: 0QIgDvK+vuiC36uPQ1NLiOMujWRuOLPe5x2tJ4doi7fSR7W9OUsfqlHWTAuK6XOz
