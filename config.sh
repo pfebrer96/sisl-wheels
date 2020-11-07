@@ -10,5 +10,7 @@ function pre_build {
 function run_tests {
     # Runs tests on installed distribution from an empty directory
     python --version
+    pip install pytest
     python -c 'import os; print(os.getcwd())'
+    pytest
 }
