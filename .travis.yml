@@ -1,0 +1,115 @@
+language: python
+python: 3.6
+services: docker
+env:
+  global:
+  - REPO_DIR=sisl
+  - BUILD_COMMIT=0.10.0
+  - PLAT=x86_64
+  - MB_PYTHON_OSX_VER=10.9
+  - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
+  - BUILD_DEPENDS=
+  - TEST_DEPENDS=
+  - secure: k+rFEWlbje6cBTf9dEvtdTqJ66wgVMTcpy6rSZdHa0A6d21pIyuuKscp/fr++rF9x0DOzXLuuB2g4Wy4HaehGIZYYFrMpW1t8JlQKa6HG8a42AUV2uWPxfVDKdv1tqaJj75Ey+rBy5/gsPIaIIQtpbmwUM/HqzHscxCvpDEE5MU=
+  - DAILY_COMMIT=master
+matrix:
+  include:
+  # - os: osx
+  #   language: generic
+  #   env:
+  #   - MB_PYTHON_VERSION=3.8
+  # - os: osx
+  #   language: generic
+  #   env:
+  #   - MB_PYTHON_VERSION=3.7
+  # - os: osx
+  #   language: generic
+  #   env:
+  #   - MB_PYTHON_VERSION=3.6
+  # - os: osx
+  #   language: generic
+  #   env:
+  #   - MB_PYTHON_VERSION=3.5
+  #   - MB_PYTHON_OSX_VER=10.6
+  # - os: linux
+  #   env:
+  #   - MB_PYTHON_VERSION=3.5
+  # - os: linux
+  #   env:
+  #   - MB_PYTHON_VERSION=3.5
+  #   - PLAT=i686
+  # - os: linux
+  #   arch: arm64
+  #   env:
+  #   - MB_PYTHON_VERSION=3.5
+  #   - PLAT=aarch64
+  #   - MB_ML_VER=2014
+  #   - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.6
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.6
+    - PLAT=i686
+  # - os: linux
+  #   arch: arm64
+  #   env:
+  #   - MB_PYTHON_VERSION=3.6
+  #   - PLAT=aarch64
+  #   - MB_ML_VER=2014
+  #   - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+  # - os: linux
+  #   env:
+  #   - MB_PYTHON_VERSION=3.7
+  # - os: linux
+  #   env:
+  #   - MB_PYTHON_VERSION=3.7
+  #   - PLAT=i686
+  # - os: linux
+  #   arch: arm64
+  #   env:
+  #   - MB_PYTHON_VERSION=3.7
+  #   - PLAT=aarch64
+  #   - MB_ML_VER=2014
+  #   - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+  # - os: linux
+  #   env:
+  #   - MB_PYTHON_VERSION=3.8
+  # - os: linux
+  #   env:
+  #   - MB_PYTHON_VERSION=3.8
+  #   - PLAT=i686
+  # - os: linux
+  #   arch: arm64
+  #   env:
+  #   - MB_PYTHON_VERSION=3.8
+  #   - PLAT=aarch64
+  #   - MB_ML_VER=2014
+  #   - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+
+before_install:
+- if [ "$TRAVIS_BRANCH" == "daily" ]; then CONTAINER="pre-release"; BUILD_COMMIT=${DAILY_COMMIT:-$BUILD_COMMIT};
+  else CONTAINER=wheels; UPLOAD_ARGS="--no-update-index"; fi
+- source multibuild/common_utils.sh
+- source multibuild/travis_steps.sh
+- before_install
+install:
+- clean_code $REPO_DIR $BUILD_COMMIT
+- PATH=${PATH}:/Library/Frameworks/Python.framework/Versions/${MB_PYTHON_VERSION}/bin  build_wheel
+  $REPO_DIR $PLAT
+- ls -l $PWD/$WHEEL_SDIR/*.whl
+script:
+- PATH=${PATH}:/Library/Frameworks/Python.framework/Versions/${MB_PYTHON_VERSION}/bin  install_run
+  $PLAT
+
+deploy:
+  provider: releases
+  api_key:
+    secure: UHu+kC0MlBoT5cxz8N5W1VhgBAbbu/jrZTO55dElrb8AFt3a72B+WL0aML6HBrficdT7FCIhZgUrPBbyeK5sHoLl0ce5QMZ1PDuOR1VSOeBQXVCgTs/wEqe42xQZeoOH+N4s3v8QmWrHjQ2kxjtsY3Ce9Areap4dnld1GxjwXH4PcOXmQVq70yk7tIuMhNgb8VgZuLC1JGxNREtfDn0XZIjg2A7eiXvg/jkkOOM+JuyuI2EUy78Uli1zhLytzZfkFC+O3ZxOWgNuam9d0pRb/iOCJNYQw4FgTIjM4OoaZi5DPqKAhgXhJYBwtz/LqPVdVU7lEvXkNLJ3Ubo8V0+pxNyRUqwuSvn4UUrC7+0GWWTi8tYi37IfvtbLK655L+Nbc4WyGxn3L2O/1Ioz1rH5NryFcFKVw1NoTnC378oKrA49KSdchHhtChWo03YIQZDaVrw11k/+78iL7zPsRovSSv+sK9obzfTWdBmnm+ReP+hP49VwLLtN1m0PtTRLn3S0aHkyYPOA4+MYzVkUwivtQrT5YaYY3I4y7Vw2XgpRXQ5hPw98YilFj33YlkzKWJEO4i8EYvIv5d2jWOM8UQLf0l9FJvfsKdpw8DCXRqc8zBVAUxTrTaIdw0jubR8O8Z8YC4qolxtfM8+YJmqV7f76LOp5yMkipxV27hiK+911s7o=
+  file_glob: true
+  file: "${TRAVIS_BUILD_DIR}/${WHEEL_SDIR}/*.whl"
+  on:
+    repo: pfebrer/sisl-wheels
+    tags: true
+  skip_cleanup: 'true'
