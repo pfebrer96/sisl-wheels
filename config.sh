@@ -10,10 +10,4 @@ function pre_build {
 function run_tests {
     # Runs tests on installed distribution from an empty directory
     pip install pytest
-
-    export PYTHON_RT=$(which python)
-    export SISL_DIR=${PYTHON_RT/"bin/python"/"lib/python*/site_packages/sisl/"}
-
-    echo $SISL_DIR
-    pytest $SISL_DIR
 }
