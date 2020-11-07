@@ -4,7 +4,7 @@ services: docker
 env:
   global:
   - REPO_DIR=sisl
-  - BUILD_COMMIT=x
+  - BUILD_COMMIT=0.10.0
   - PLAT=x86_64
   - MB_PYTHON_OSX_VER=10.9
   - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
