@@ -95,6 +95,7 @@ build_script:
   - git fetch origin
   - git checkout %BUILD_COMMIT%
   - pip install -r requirements.txt
+  - pip install Cython
 
   - python setup.py bdist_wheel
   - ps: |
