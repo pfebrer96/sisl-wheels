@@ -10,6 +10,4 @@ function pre_build {
 function run_tests {
     # Runs tests on installed distribution from an empty directory
     python --version
-    cython ../Cython/Demos/*.pyx
-    cython ../Cython/Demos/*/*.pyx
 }
