@@ -9,8 +9,10 @@ function pre_build {
 
 function run_tests {
     # Runs tests on installed distribution from an empty directory
-    python --version
     pip install pytest
-    python -c 'import os; print(os.getcwd())'
-    pytest
+
+    PYTHON_RT=$(which python)
+    SISL_DIR=${PYTHON_RT/"bin/python"/"lib/python*/site_packages/sisl"}
+
+    pytest $SISL_DIR
 }
