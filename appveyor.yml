@@ -14,54 +14,57 @@ environment:
       BUILD_COMMIT: v0.10.0
 
     matrix:
+    # - PYTHON: C:\Python39
+    #   PYTHON_VERSION: 3.9
+    #   PYTHON_ARCH: 32
+    #   NUMPY_BUILD_DEP: numpy==1.19.3
+    #   NUMPY_TEST_DEP: numpy==1.19.3
+    #   CYTHON_BUILD_DEP: Cython
 
-    - PYTHON: "C:\\Python38"
-      PYTHON_VERSION: "3.8.x" # currently 3.8.0
-      PYTHON_ARCH: "32"
+    # - PYTHON: C:\Python39-x64
+    #   PYTHON_VERSION: 3.9
+    #   PYTHON_ARCH: 64
+    #   NUMPY_BUILD_DEP: numpy==1.19.3
+    #   NUMPY_TEST_DEP: numpy==1.19.3
+    #   CYTHON_BUILD_DEP: Cython
 
-    # - PYTHON: "C:\\Python38-x64"
-    #   PYTHON_VERSION: "3.8.x" # currently 3.8.0
-    #   PYTHON_ARCH: "64"
+    # - PYTHON: C:\Python38
+    #   PYTHON_VERSION: 3.8
+    #   PYTHON_ARCH: 32
+    #   NUMPY_BUILD_DEP: numpy==1.17.3
+    #   NUMPY_TEST_DEP: numpy==1.17.3
+    #   CYTHON_BUILD_DEP: Cython
 
-    # - PYTHON: "C:\\Python37"
-    #   PYTHON_VERSION: "3.7.x" # currently 3.7.0
-    #   PYTHON_ARCH: "32"
+    # - PYTHON: C:\Python38-x64
+    #   PYTHON_VERSION: 3.8
+    #   PYTHON_ARCH: 64
+    #   NUMPY_BUILD_DEP: numpy==1.17.3
+    #   NUMPY_TEST_DEP: numpy==1.17.3
+    #   CYTHON_BUILD_DEP: Cython
 
-    # - PYTHON: "C:\\Python37-x64"
-    #   PYTHON_VERSION: "3.7.x" # currently 3.7.0
-    #   PYTHON_ARCH: "64"
+    # - PYTHON: C:\Python37
+    #   PYTHON_VERSION: 3.7
+    #   PYTHON_ARCH: 32
+    #   NUMPY_BUILD_DEP: numpy==1.14.5
+    #   NUMPY_TEST_DEP: numpy==1.14.5
+    #   CYTHON_BUILD_DEP: Cython
 
-    # - PYTHON: "C:\\Python27"
-    #   PYTHON_VERSION: "2.7.x" # currently 2.7.11
-    #   PYTHON_ARCH: "32"
+    # - PYTHON: C:\Python37-x64
+    #   PYTHON_VERSION: 3.7
+    #   PYTHON_ARCH: 64
+    #   NUMPY_BUILD_DEP: numpy==1.14.5
+    #   NUMPY_TEST_DEP: numpy==1.14.5
+    #   CYTHON_BUILD_DEP: Cython
 
-    # - PYTHON: "C:\\Python27-x64"
-    #   PYTHON_VERSION: "2.7.x" # currently 2.7.11
-    #   PYTHON_ARCH: "64"
+    # - PYTHON: C:\Python36
+    #   PYTHON_VERSION: 3.6
+    #   PYTHON_ARCH: 32
+    #   NUMPY_BUILD_DEP: numpy==1.14.5
 
-    # - PYTHON: "C:\\Python36"
-    #   PYTHON_VERSION: "3.6.x" # currently 3.6.5
-    #   PYTHON_ARCH: "32"
-
-    # - PYTHON: "C:\\Python36-x64"
-    #   PYTHON_VERSION: "3.6.x" # currently 3.6.5
-    #   PYTHON_ARCH: "64"
-
-    # - PYTHON: "C:\\Python35"
-    #   PYTHON_VERSION: "3.5.x" # currently 3.5.1
-    #   PYTHON_ARCH: "32"
-
-    # - PYTHON: "C:\\Python35-x64"
-    #   PYTHON_VERSION: "3.5.x" # currently 3.5.1
-    #   PYTHON_ARCH: "64"
-
-    # - PYTHON: "C:\\Python34"
-    #   PYTHON_VERSION: "3.4.x" # currently 3.4.3
-    #   PYTHON_ARCH: "32"
-
-    # - PYTHON: "C:\\Python34-x64"
-    #   PYTHON_VERSION: "3.4.x" # currently 3.4.3
-    #   PYTHON_ARCH: "64"
+    - PYTHON: C:\Python36-x64
+      PYTHON_VERSION: 3.6
+      PYTHON_ARCH: 64
+      NUMPY_BUILD_DEP: numpy==1.14.5
 
 install:
   - cmd: echo "Using cmd"
