@@ -29,6 +29,7 @@ def main():
             for line in lines:
                 line = regexp.sub(subst, line)
                 fobj.write(line)
+    check_call(['git', 'add', '-A'])
     check_call(['git', 'commit', '-a', '-m',
                 'Trigger build for ' + commit_name])
     if '.' in commit_name:
