@@ -7,83 +7,47 @@ env:
   - REPO_DIR=sisl
   - BUILD_COMMIT=v0.10.0
   - BUILD_DEPENDS=
-  - TEST_DEPENDS=
+  - TEST_DEPENDS=pytest
 
 matrix:
   include:
-  - os: osx
-    language: generic
-    env:
-    - MB_PYTHON_VERSION=3.8
-  # - os: osx
-  #   language: generic
-  #   env:
-  #   - MB_PYTHON_VERSION=3.7
-  # - os: osx
-  #   language: generic
-  #   env:
-  #   - MB_PYTHON_VERSION=3.6
-  # - os: osx
-  #   language: generic
-  #   env:
-  #   - MB_PYTHON_VERSION=3.5
-  #   - MB_PYTHON_OSX_VER=10.6
-  # - os: linux
-  #   env:
-  #   - MB_PYTHON_VERSION=3.5
-  # - os: linux
-  #   env:
-  #   - MB_PYTHON_VERSION=3.5
-  #   - PLAT=i686
-  # - os: linux
-  #   arch: arm64
-  #   env:
-  #   - MB_PYTHON_VERSION=3.5
-  #   - PLAT=aarch64
-  #   - MB_ML_VER=2014
-  #   - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
-  # - os: linux
-  #   env:
-  #   - MB_PYTHON_VERSION=3.6
-  # - os: linux
-  #   env:
-  #   - MB_PYTHON_VERSION=3.6
-  #   - PLAT=i686
-  # - os: linux
-  #   arch: arm64
-  #   env:
-  #   - MB_PYTHON_VERSION=3.6
-  #   - PLAT=aarch64
-  #   - MB_ML_VER=2014
-  #   - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
-  # - os: linux
-  #   env:
-  #   - MB_PYTHON_VERSION=3.7
-  # - os: linux
-  #   env:
-  #   - MB_PYTHON_VERSION=3.7
-  #   - PLAT=i686
-  # - os: linux
-  #   arch: arm64
-  #   env:
-  #   - MB_PYTHON_VERSION=3.7
-  #   - PLAT=aarch64
-  #   - MB_ML_VER=2014
-  #   - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
-  # - os: linux
-  #   env:
-  #   - MB_PYTHON_VERSION=3.8
-  # - os: linux
-  #   env:
-  #   - MB_PYTHON_VERSION=3.8
-  #   - PLAT=i686
-  # - os: linux
-  #   arch: arm64
-  #   env:
-  #   - MB_PYTHON_VERSION=3.8
-  #   - PLAT=aarch64
-  #   - MB_ML_VER=2014
-  #   - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.5
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION=3.5
+    #     - PLAT=i686
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION=3.6
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION=3.6
+    #     - PLAT=i686
+    - os: osx
+      env:
+        - MB_PYTHON_VERSION=3.5
+    # - os: osx
+    #   env:
+    #     - MB_PYTHON_VERSION=3.6
+    # - os: osx
+    #   env:
+    #     - MB_PYTHON_VERSION=3.7
+    #     - MB_PYTHON_OSX_VER=10.6
+    # - os: osx
+    #   env:
+    #     - MB_PYTHON_VERSION=3.7
+    # - os: osx
+    #   env:
+    #     - MB_PYTHON_VERSION=3.8
+    # - os: osx
+    #   env:
+    #     - MB_PYTHON_VERSION=3.9
+    # - os: osx
+    #   language: generic
+    #   env:
+    #     - MB_PYTHON_VERSION=pypy-5.7
 
 before_install:
 - source multibuild/common_utils.sh
