@@ -94,6 +94,7 @@ build_script:
   - cd sisl
   - git fetch origin
   - git checkout %BUILD_COMMIT%
+  - pip install -r requirements.txt
 
   - python setup.py bdist_wheel
   - ps: |
