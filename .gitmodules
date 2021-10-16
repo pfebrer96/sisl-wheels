@@ -3,4 +3,4 @@
 	url = https://github.com/multi-build/multibuild.git
 [submodule "sisl"]
 	path = sisl
-	url = https://github.com/zerothi/sisl.git
+	url = git@github.com:zerothi/sisl.git
