@@ -8,13 +8,13 @@ the travis-ci OSX and Linux machines and the appveyor Windows machines.
 **Note:** Windows builds are broken at the moment. The compilation works fine but sisl can't find the `.dll` files.
 
 The travis-ci interface for the builds is
-https://travis-ci.com/github/pfebrer/sisl-wheels
+https://travis-ci.com/github/zerothi/sisl-wheels
 
 Appveyor interface at
-https://ci.appveyor.com/project/pfebrer/sisl-wheels/
+https://ci.appveyor.com/project/zerothi/sisl-wheels/
 
 The driving github repository is
-https://github.com/pfebrer/sisl-wheels
+https://github.com/zerothi/sisl-wheels
 
 How it works
 ============

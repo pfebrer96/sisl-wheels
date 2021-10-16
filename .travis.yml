@@ -78,6 +78,6 @@ deploy:
   file_glob: true
   file: "${TRAVIS_BUILD_DIR}/${WHEEL_SDIR}/*.whl"
   on:
-    repo: pfebrer/sisl-wheels
+    repo: zerothi/sisl-wheels
     tags: true
   skip_cleanup: 'true'
